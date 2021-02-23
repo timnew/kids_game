@@ -18,35 +18,35 @@ abstract class MemoryCardSet implements _$MemoryCardSet {
   factory MemoryCardSet.cuteAnimalSet() => MemoryCardSet.create([
         MemoryCard(
           name: "elephant",
-          imageFile: "images/memory_cards_game/cute_animals/elephant.jpg",
+          imageFile: "memory_card_sets/cute_animals/elephant.jpg",
         ),
         MemoryCard(
           name: "flamingo",
-          imageFile: "images/memory_cards_game/cute_animals/flamingo.jpg",
+          imageFile: "memory_card_sets/cute_animals/flamingo.jpg",
         ),
         MemoryCard(
           name: "giraffe",
-          imageFile: "images/memory_cards_game/cute_animals/giraffe.jpg",
+          imageFile: "memory_card_sets/cute_animals/giraffe.jpg",
         ),
         MemoryCard(
           name: "koala",
-          imageFile: "images/memory_cards_game/cute_animals/koala.jpg",
+          imageFile: "memory_card_sets/cute_animals/koala.jpg",
         ),
         MemoryCard(
           name: "panda",
-          imageFile: "images/memory_cards_game/cute_animals/panda.jpg",
+          imageFile: "memory_card_sets/cute_animals/panda.jpg",
         ),
         MemoryCard(
           name: "sloth",
-          imageFile: "images/memory_cards_game/cute_animals/sloth.jpg",
+          imageFile: "memory_card_sets/cute_animals/sloth.jpg",
         ),
         MemoryCard(
           name: "tiger",
-          imageFile: "images/memory_cards_game/cute_animals/tiger.jpg",
+          imageFile: "memory_card_sets/cute_animals/tiger.jpg",
         ),
         MemoryCard(
           name: "zebra",
-          imageFile: "images/memory_cards_game/cute_animals/zebra.jpg",
+          imageFile: "memory_card_sets/cute_animals/zebra.jpg",
         ),
       ]);
 }
