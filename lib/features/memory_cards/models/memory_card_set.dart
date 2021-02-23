@@ -6,11 +6,16 @@ import 'memory_card.dart';
 part 'memory_card_set.freezed.dart';
 
 @freezed
-abstract class MemoryCardSet with _$MemoryCardSet {
-  factory MemoryCardSet._(Iterable<MemoryCard> cards) =>
-      _MemoryCardSet(allCards: BuiltSet.of(cards));
+abstract class MemoryCardSet implements _$MemoryCardSet {
+  MemoryCardSet._();
 
-  factory MemoryCardSet.cuteAnimalSet() => MemoryCardSet._([
+  factory MemoryCardSet({required BuiltSet<MemoryCard> allCards}) =
+      _MemoryCardSet;
+
+  factory MemoryCardSet.create(Iterable<MemoryCard> cards) =>
+      MemoryCardSet(allCards: BuiltSet.of(cards));
+
+  factory MemoryCardSet.cuteAnimalSet() => MemoryCardSet.create([
         MemoryCard(
           name: "elephant",
           imageFile: "images/memory_cards_game/cute_animals/elephant.jpg",

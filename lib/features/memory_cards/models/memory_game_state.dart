@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:built_collection/built_collection.dart';
 
-import 'memory_card_set.dart';
 import 'memory_card_slot.dart';
 import 'memory_game_options.dart';
 
@@ -13,7 +12,6 @@ abstract class MemoryGameState implements _$MemoryGameState {
 
   factory MemoryGameState({
     required MemoryGameOptions options,
-    required MemoryCardSet cardSet,
     required BuiltList<MemoryCardSlot> slots,
   }) = _MemoryGameState;
 }
