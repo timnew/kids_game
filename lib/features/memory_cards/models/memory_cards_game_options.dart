@@ -19,7 +19,7 @@ abstract class MemoryCardsGameOptions implements _$MemoryCardsGameOptions {
   }) = _MemoryGameOptions;
 
   factory MemoryCardsGameOptions.defaultOptions() {
-    final cardSet = MemoryCardSet.cuteAnimalSet();
+    final cardSet = MemoryCardSet.transportations();
 
     return MemoryCardsGameOptions(
       cardSet: cardSet,
