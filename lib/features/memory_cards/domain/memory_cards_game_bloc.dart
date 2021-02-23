@@ -1,19 +1,27 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kids_game/features/memory_cards/models/memory_cards_game_options.dart';
 
 import '../models/memory_card_game.dart';
 
-class GameStateBloc extends Cubit<MemoryCardsGame> {
-  GameStateBloc(MemoryCardsGame initialState) : super(initialState);
+class MemoryCardsGameBloc extends Cubit<MemoryCardsGame> {
+  MemoryCardsGameBloc(MemoryCardsGame initialState) : super(initialState);
+
+  void restart() => updateOptions(state.options);
+
+  void updateOptions(MemoryCardsGameOptions options) =>
+      emit(options.createGame());
 
   void flipCard(int index) {
     final slots = state.slots;
     final selected = state.selected;
+    final flipCount = state.flipCount;
 
     if (selected == null) {
       emit(state.copyWith(
         slots: slots.rebuild(
           (b) => b[index] = b[index].showCard(),
         ),
+        flipCount: flipCount + 1,
         selected: index,
       ));
 
@@ -39,6 +47,7 @@ class GameStateBloc extends Cubit<MemoryCardsGame> {
             b[index] = b[index].matchCard();
           },
         ),
+        flipCount: flipCount + 1,
         matchedPairCount: state.matchedPairCount + 1,
         selected: null,
       ));
@@ -52,6 +61,7 @@ class GameStateBloc extends Cubit<MemoryCardsGame> {
           b[index] = b[index].showCard();
         },
       ),
+      flipCount: flipCount + 1,
       selected: null,
     ));
 

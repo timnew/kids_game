@@ -29,10 +29,8 @@ abstract class MemoryCardsGameOptions implements _$MemoryCardsGameOptions {
   }
 
   MemoryCardsGame createGame() => MemoryCardsGame(
-        durationOnMistake: durationOnMistake,
+        options: this,
         slots: _generateSlots(cardSet.allCards.take(pairCount)),
-        matchedPairCount: 0,
-        selected: null,
       );
 
   BuiltList<MemoryCardSlot> _generateSlots(Iterable<MemoryCard> cards) {

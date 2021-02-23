@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../domain/game_state_bloc.dart';
+import '../domain/memory_cards_game_bloc.dart';
 import '../models/memory_card_game.dart';
 
 import 'memory_card_slot_widget.dart';
@@ -11,14 +11,16 @@ class MemoryCardBoardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      BlocBuilder<GameStateBloc, MemoryCardsGame>(
+      BlocBuilder<MemoryCardsGameBloc, MemoryCardsGame>(
         builder: _buildContent,
       );
 
-  Widget _buildContent(BuildContext context, MemoryCardsGame state) =>
-      GridView.count(
-        crossAxisCount: 4,
-        children: _buildChildren(state),
+  Widget _buildContent(BuildContext context, MemoryCardsGame state) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GridView.count(
+          crossAxisCount: 4,
+          children: _buildChildren(state),
+        ),
       );
 
   List<Widget> _buildChildren(MemoryCardsGame state) => state.slots

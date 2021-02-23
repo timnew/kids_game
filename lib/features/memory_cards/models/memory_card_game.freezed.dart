@@ -14,14 +14,16 @@ class _$MemoryCardsGameTearOff {
   const _$MemoryCardsGameTearOff();
 
   _MemoryCardsGame call(
-      {required Duration durationOnMistake,
+      {required MemoryCardsGameOptions options,
       required BuiltList<MemoryCardSlot> slots,
-      required int matchedPairCount,
-      required int? selected}) {
+      int matchedPairCount = 0,
+      int flipCount = 0,
+      int? selected}) {
     return _MemoryCardsGame(
-      durationOnMistake: durationOnMistake,
+      options: options,
       slots: slots,
       matchedPairCount: matchedPairCount,
+      flipCount: flipCount,
       selected: selected,
     );
   }
@@ -32,9 +34,10 @@ const $MemoryCardsGame = _$MemoryCardsGameTearOff();
 
 /// @nodoc
 mixin _$MemoryCardsGame {
-  Duration get durationOnMistake;
+  MemoryCardsGameOptions get options;
   BuiltList<MemoryCardSlot> get slots;
   int get matchedPairCount;
+  int get flipCount;
   int? get selected;
 
   @JsonKey(ignore: true)
@@ -47,10 +50,13 @@ abstract class $MemoryCardsGameCopyWith<$Res> {
           MemoryCardsGame value, $Res Function(MemoryCardsGame) then) =
       _$MemoryCardsGameCopyWithImpl<$Res>;
   $Res call(
-      {Duration durationOnMistake,
+      {MemoryCardsGameOptions options,
       BuiltList<MemoryCardSlot> slots,
       int matchedPairCount,
+      int flipCount,
       int? selected});
+
+  $MemoryCardsGameOptionsCopyWith<$Res> get options;
 }
 
 /// @nodoc
@@ -64,22 +70,31 @@ class _$MemoryCardsGameCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? durationOnMistake = freezed,
+    Object? options = freezed,
     Object? slots = freezed,
     Object? matchedPairCount = freezed,
+    Object? flipCount = freezed,
     Object? selected = freezed,
   }) {
     return _then(_value.copyWith(
-      durationOnMistake: durationOnMistake == freezed
-          ? _value.durationOnMistake
-          : durationOnMistake as Duration,
+      options: options == freezed
+          ? _value.options
+          : options as MemoryCardsGameOptions,
       slots:
           slots == freezed ? _value.slots : slots as BuiltList<MemoryCardSlot>,
       matchedPairCount: matchedPairCount == freezed
           ? _value.matchedPairCount
           : matchedPairCount as int,
+      flipCount: flipCount == freezed ? _value.flipCount : flipCount as int,
       selected: selected == freezed ? _value.selected : selected as int?,
     ));
+  }
+
+  @override
+  $MemoryCardsGameOptionsCopyWith<$Res> get options {
+    return $MemoryCardsGameOptionsCopyWith<$Res>(_value.options, (value) {
+      return _then(_value.copyWith(options: value));
+    });
   }
 }
 
@@ -91,10 +106,14 @@ abstract class _$MemoryCardsGameCopyWith<$Res>
       __$MemoryCardsGameCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Duration durationOnMistake,
+      {MemoryCardsGameOptions options,
       BuiltList<MemoryCardSlot> slots,
       int matchedPairCount,
+      int flipCount,
       int? selected});
+
+  @override
+  $MemoryCardsGameOptionsCopyWith<$Res> get options;
 }
 
 /// @nodoc
@@ -110,20 +129,22 @@ class __$MemoryCardsGameCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? durationOnMistake = freezed,
+    Object? options = freezed,
     Object? slots = freezed,
     Object? matchedPairCount = freezed,
+    Object? flipCount = freezed,
     Object? selected = freezed,
   }) {
     return _then(_MemoryCardsGame(
-      durationOnMistake: durationOnMistake == freezed
-          ? _value.durationOnMistake
-          : durationOnMistake as Duration,
+      options: options == freezed
+          ? _value.options
+          : options as MemoryCardsGameOptions,
       slots:
           slots == freezed ? _value.slots : slots as BuiltList<MemoryCardSlot>,
       matchedPairCount: matchedPairCount == freezed
           ? _value.matchedPairCount
           : matchedPairCount as int,
+      flipCount: flipCount == freezed ? _value.flipCount : flipCount as int,
       selected: selected == freezed ? _value.selected : selected as int?,
     ));
   }
@@ -132,38 +153,46 @@ class __$MemoryCardsGameCopyWithImpl<$Res>
 /// @nodoc
 class _$_MemoryCardsGame extends _MemoryCardsGame {
   _$_MemoryCardsGame(
-      {required this.durationOnMistake,
+      {required this.options,
       required this.slots,
-      required this.matchedPairCount,
-      required this.selected})
+      this.matchedPairCount = 0,
+      this.flipCount = 0,
+      this.selected})
       : super._();
 
   @override
-  final Duration durationOnMistake;
+  final MemoryCardsGameOptions options;
   @override
   final BuiltList<MemoryCardSlot> slots;
+  @JsonKey(defaultValue: 0)
   @override
   final int matchedPairCount;
+  @JsonKey(defaultValue: 0)
+  @override
+  final int flipCount;
   @override
   final int? selected;
 
   @override
   String toString() {
-    return 'MemoryCardsGame(durationOnMistake: $durationOnMistake, slots: $slots, matchedPairCount: $matchedPairCount, selected: $selected)';
+    return 'MemoryCardsGame(options: $options, slots: $slots, matchedPairCount: $matchedPairCount, flipCount: $flipCount, selected: $selected)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _MemoryCardsGame &&
-            (identical(other.durationOnMistake, durationOnMistake) ||
+            (identical(other.options, options) ||
                 const DeepCollectionEquality()
-                    .equals(other.durationOnMistake, durationOnMistake)) &&
+                    .equals(other.options, options)) &&
             (identical(other.slots, slots) ||
                 const DeepCollectionEquality().equals(other.slots, slots)) &&
             (identical(other.matchedPairCount, matchedPairCount) ||
                 const DeepCollectionEquality()
                     .equals(other.matchedPairCount, matchedPairCount)) &&
+            (identical(other.flipCount, flipCount) ||
+                const DeepCollectionEquality()
+                    .equals(other.flipCount, flipCount)) &&
             (identical(other.selected, selected) ||
                 const DeepCollectionEquality()
                     .equals(other.selected, selected)));
@@ -172,9 +201,10 @@ class _$_MemoryCardsGame extends _MemoryCardsGame {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(durationOnMistake) ^
+      const DeepCollectionEquality().hash(options) ^
       const DeepCollectionEquality().hash(slots) ^
       const DeepCollectionEquality().hash(matchedPairCount) ^
+      const DeepCollectionEquality().hash(flipCount) ^
       const DeepCollectionEquality().hash(selected);
 
   @JsonKey(ignore: true)
@@ -186,17 +216,20 @@ class _$_MemoryCardsGame extends _MemoryCardsGame {
 abstract class _MemoryCardsGame extends MemoryCardsGame {
   _MemoryCardsGame._() : super._();
   factory _MemoryCardsGame(
-      {required Duration durationOnMistake,
+      {required MemoryCardsGameOptions options,
       required BuiltList<MemoryCardSlot> slots,
-      required int matchedPairCount,
-      required int? selected}) = _$_MemoryCardsGame;
+      int matchedPairCount,
+      int flipCount,
+      int? selected}) = _$_MemoryCardsGame;
 
   @override
-  Duration get durationOnMistake;
+  MemoryCardsGameOptions get options;
   @override
   BuiltList<MemoryCardSlot> get slots;
   @override
   int get matchedPairCount;
+  @override
+  int get flipCount;
   @override
   int? get selected;
   @override

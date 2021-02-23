@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:kids_game/features/memory_cards/domain/game_state_bloc.dart';
 
+import '../domain/memory_cards_game_bloc.dart';
 import '../models/memory_card_slot.dart';
 
 class MemoryCardSlotWidget extends StatelessWidget {
@@ -12,6 +12,7 @@ class MemoryCardSlotWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
+        margin: EdgeInsets.all(8),
         decoration: _buildDecoratino(),
         child: _buildCard(context),
       );
@@ -22,9 +23,9 @@ class MemoryCardSlotWidget extends StatelessWidget {
       );
 
   BorderSide _buidlBoardSide() => slot.state.map(
-        hide: (_) => BorderSide(color: Colors.black),
-        show: (_) => BorderSide(color: Colors.blue),
-        matched: (_) => BorderSide(color: Colors.green),
+        hide: (_) => BorderSide(width: 2.0, color: Colors.black),
+        show: (_) => BorderSide(width: 2.0, color: Colors.blue),
+        matched: (_) => BorderSide(width: 2.0, color: Colors.green),
       );
 
   Widget _buildCard(BuildContext context) => slot.state.maybeMap(
@@ -43,5 +44,5 @@ class MemoryCardSlotWidget extends StatelessWidget {
       );
 
   void _flipCard(BuildContext context) =>
-      context.read<GameStateBloc>().flipCard(slot.index);
+      context.read<MemoryCardsGameBloc>().flipCard(slot.index);
 }
