@@ -1,5 +1,5 @@
 import 'package:flutter/Material.dart';
-import 'package:kids_game/features/memory_cards/screens/memory_cards_game.dart';
+import 'package:kids_game/features/memory_cards/screens/memory_cards_game_screen.dart';
 
 class App extends StatelessWidget {
   // This widget is the root of your application.

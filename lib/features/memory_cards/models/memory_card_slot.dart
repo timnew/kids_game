@@ -10,9 +10,9 @@ abstract class MemoryCardSlotState implements _$MemoryCardSlotState {
 
   factory MemoryCardSlotState.hide() = Hide;
 
-  factory MemoryCardSlotState.mismatched({
-    required DateTime revertAt,
-  }) = Mismatched;
+  factory MemoryCardSlotState.show({
+    required DateTime showAt,
+  }) = Show;
 
   factory MemoryCardSlotState.matched() = Matched;
 }
@@ -28,6 +28,6 @@ abstract class MemoryCardSlot implements _$MemoryCardSlot {
 
   factory MemoryCardSlot.create(MemoryCard card) => MemoryCardSlot(
         card: card,
-        state: MemoryCardSlotState.hide(),
+        state: MemoryCardSlotState.matched(),
       );
 }

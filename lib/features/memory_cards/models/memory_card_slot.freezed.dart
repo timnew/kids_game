@@ -17,9 +17,9 @@ class _$MemoryCardSlotStateTearOff {
     return Hide();
   }
 
-  Mismatched mismatched({required DateTime revertAt}) {
-    return Mismatched(
-      revertAt: revertAt,
+  Show show({required DateTime showAt}) {
+    return Show(
+      showAt: showAt,
     );
   }
 
@@ -36,26 +36,26 @@ mixin _$MemoryCardSlotState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() hide,
-    required TResult Function(DateTime revertAt) mismatched,
+    required TResult Function(DateTime showAt) show,
     required TResult Function() matched,
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? hide,
-    TResult Function(DateTime revertAt)? mismatched,
+    TResult Function(DateTime showAt)? show,
     TResult Function()? matched,
     required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Hide value) hide,
-    required TResult Function(Mismatched value) mismatched,
+    required TResult Function(Show value) show,
     required TResult Function(Matched value) matched,
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Hide value)? hide,
-    TResult Function(Mismatched value)? mismatched,
+    TResult Function(Show value)? show,
     TResult Function(Matched value)? matched,
     required TResult orElse(),
   });
@@ -115,7 +115,7 @@ class _$Hide extends Hide {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() hide,
-    required TResult Function(DateTime revertAt) mismatched,
+    required TResult Function(DateTime showAt) show,
     required TResult Function() matched,
   }) {
     return hide();
@@ -125,7 +125,7 @@ class _$Hide extends Hide {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? hide,
-    TResult Function(DateTime revertAt)? mismatched,
+    TResult Function(DateTime showAt)? show,
     TResult Function()? matched,
     required TResult orElse(),
   }) {
@@ -139,7 +139,7 @@ class _$Hide extends Hide {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Hide value) hide,
-    required TResult Function(Mismatched value) mismatched,
+    required TResult Function(Show value) show,
     required TResult Function(Matched value) matched,
   }) {
     return hide(this);
@@ -149,7 +149,7 @@ class _$Hide extends Hide {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Hide value)? hide,
-    TResult Function(Mismatched value)? mismatched,
+    TResult Function(Show value)? show,
     TResult Function(Matched value)? matched,
     required TResult orElse(),
   }) {
@@ -166,83 +166,80 @@ abstract class Hide extends MemoryCardSlotState {
 }
 
 /// @nodoc
-abstract class $MismatchedCopyWith<$Res> {
-  factory $MismatchedCopyWith(
-          Mismatched value, $Res Function(Mismatched) then) =
-      _$MismatchedCopyWithImpl<$Res>;
-  $Res call({DateTime revertAt});
+abstract class $ShowCopyWith<$Res> {
+  factory $ShowCopyWith(Show value, $Res Function(Show) then) =
+      _$ShowCopyWithImpl<$Res>;
+  $Res call({DateTime showAt});
 }
 
 /// @nodoc
-class _$MismatchedCopyWithImpl<$Res>
-    extends _$MemoryCardSlotStateCopyWithImpl<$Res>
-    implements $MismatchedCopyWith<$Res> {
-  _$MismatchedCopyWithImpl(Mismatched _value, $Res Function(Mismatched) _then)
-      : super(_value, (v) => _then(v as Mismatched));
+class _$ShowCopyWithImpl<$Res> extends _$MemoryCardSlotStateCopyWithImpl<$Res>
+    implements $ShowCopyWith<$Res> {
+  _$ShowCopyWithImpl(Show _value, $Res Function(Show) _then)
+      : super(_value, (v) => _then(v as Show));
 
   @override
-  Mismatched get _value => super._value as Mismatched;
+  Show get _value => super._value as Show;
 
   @override
   $Res call({
-    Object? revertAt = freezed,
+    Object? showAt = freezed,
   }) {
-    return _then(Mismatched(
-      revertAt: revertAt == freezed ? _value.revertAt : revertAt as DateTime,
+    return _then(Show(
+      showAt: showAt == freezed ? _value.showAt : showAt as DateTime,
     ));
   }
 }
 
 /// @nodoc
-class _$Mismatched extends Mismatched {
-  _$Mismatched({required this.revertAt}) : super._();
+class _$Show extends Show {
+  _$Show({required this.showAt}) : super._();
 
   @override
-  final DateTime revertAt;
+  final DateTime showAt;
 
   @override
   String toString() {
-    return 'MemoryCardSlotState.mismatched(revertAt: $revertAt)';
+    return 'MemoryCardSlotState.show(showAt: $showAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Mismatched &&
-            (identical(other.revertAt, revertAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.revertAt, revertAt)));
+        (other is Show &&
+            (identical(other.showAt, showAt) ||
+                const DeepCollectionEquality().equals(other.showAt, showAt)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(revertAt);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(showAt);
 
   @JsonKey(ignore: true)
   @override
-  $MismatchedCopyWith<Mismatched> get copyWith =>
-      _$MismatchedCopyWithImpl<Mismatched>(this, _$identity);
+  $ShowCopyWith<Show> get copyWith =>
+      _$ShowCopyWithImpl<Show>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() hide,
-    required TResult Function(DateTime revertAt) mismatched,
+    required TResult Function(DateTime showAt) show,
     required TResult Function() matched,
   }) {
-    return mismatched(revertAt);
+    return show(showAt);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? hide,
-    TResult Function(DateTime revertAt)? mismatched,
+    TResult Function(DateTime showAt)? show,
     TResult Function()? matched,
     required TResult orElse(),
   }) {
-    if (mismatched != null) {
-      return mismatched(revertAt);
+    if (show != null) {
+      return show(showAt);
     }
     return orElse();
   }
@@ -251,34 +248,34 @@ class _$Mismatched extends Mismatched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Hide value) hide,
-    required TResult Function(Mismatched value) mismatched,
+    required TResult Function(Show value) show,
     required TResult Function(Matched value) matched,
   }) {
-    return mismatched(this);
+    return show(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Hide value)? hide,
-    TResult Function(Mismatched value)? mismatched,
+    TResult Function(Show value)? show,
     TResult Function(Matched value)? matched,
     required TResult orElse(),
   }) {
-    if (mismatched != null) {
-      return mismatched(this);
+    if (show != null) {
+      return show(this);
     }
     return orElse();
   }
 }
 
-abstract class Mismatched extends MemoryCardSlotState {
-  Mismatched._() : super._();
-  factory Mismatched({required DateTime revertAt}) = _$Mismatched;
+abstract class Show extends MemoryCardSlotState {
+  Show._() : super._();
+  factory Show({required DateTime showAt}) = _$Show;
 
-  DateTime get revertAt;
+  DateTime get showAt;
   @JsonKey(ignore: true)
-  $MismatchedCopyWith<Mismatched> get copyWith;
+  $ShowCopyWith<Show> get copyWith;
 }
 
 /// @nodoc
@@ -319,7 +316,7 @@ class _$Matched extends Matched {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() hide,
-    required TResult Function(DateTime revertAt) mismatched,
+    required TResult Function(DateTime showAt) show,
     required TResult Function() matched,
   }) {
     return matched();
@@ -329,7 +326,7 @@ class _$Matched extends Matched {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? hide,
-    TResult Function(DateTime revertAt)? mismatched,
+    TResult Function(DateTime showAt)? show,
     TResult Function()? matched,
     required TResult orElse(),
   }) {
@@ -343,7 +340,7 @@ class _$Matched extends Matched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Hide value) hide,
-    required TResult Function(Mismatched value) mismatched,
+    required TResult Function(Show value) show,
     required TResult Function(Matched value) matched,
   }) {
     return matched(this);
@@ -353,7 +350,7 @@ class _$Matched extends Matched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Hide value)? hide,
-    TResult Function(Mismatched value)? mismatched,
+    TResult Function(Show value)? show,
     TResult Function(Matched value)? matched,
     required TResult orElse(),
   }) {
@@ -479,8 +476,8 @@ class __$MemoryCardSlotCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_MemoryCardSlot implements _MemoryCardSlot {
-  _$_MemoryCardSlot({required this.card, required this.state});
+class _$_MemoryCardSlot extends _MemoryCardSlot {
+  _$_MemoryCardSlot({required this.card, required this.state}) : super._();
 
   @override
   final MemoryCard card;
@@ -514,7 +511,8 @@ class _$_MemoryCardSlot implements _MemoryCardSlot {
       __$MemoryCardSlotCopyWithImpl<_MemoryCardSlot>(this, _$identity);
 }
 
-abstract class _MemoryCardSlot implements MemoryCardSlot {
+abstract class _MemoryCardSlot extends MemoryCardSlot {
+  _MemoryCardSlot._() : super._();
   factory _MemoryCardSlot(
       {required MemoryCard card,
       required MemoryCardSlotState state}) = _$_MemoryCardSlot;
