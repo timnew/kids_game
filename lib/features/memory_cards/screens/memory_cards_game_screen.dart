@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kids_game/features/memory_cards/models/memory_cards_game_options.dart';
 
 import '../domain/game_state_bloc.dart';
-import '../domain/initialize_memory_cards_game.dart';
 
 import 'memory_card_board_widget.dart';
 
@@ -17,7 +17,7 @@ class MemoryCardsGameScreen extends StatelessWidget {
   Widget _buildProvider({required Widget child}) => BlocProvider(
         lazy: false,
         create: (BuildContext context) => GameStateBloc(
-          InitializeMemoryCardsGame().createGame(),
+          MemoryCardsGameOptions.defaultOptions().createGame(),
         ),
         child: child,
       );

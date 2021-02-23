@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'memory_game_options.dart';
+part of 'memory_cards_game_options.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,8 +10,8 @@ part of 'memory_game_options.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$MemoryGameOptionsTearOff {
-  const _$MemoryGameOptionsTearOff();
+class _$MemoryCardsGameOptionsTearOff {
+  const _$MemoryCardsGameOptionsTearOff();
 
   _MemoryGameOptions call(
       {required MemoryCardSet cardSet,
@@ -26,36 +26,36 @@ class _$MemoryGameOptionsTearOff {
 }
 
 /// @nodoc
-const $MemoryGameOptions = _$MemoryGameOptionsTearOff();
+const $MemoryCardsGameOptions = _$MemoryCardsGameOptionsTearOff();
 
 /// @nodoc
-mixin _$MemoryGameOptions {
+mixin _$MemoryCardsGameOptions {
   MemoryCardSet get cardSet;
   int get pairCount;
   Duration get durationOnMistake;
 
   @JsonKey(ignore: true)
-  $MemoryGameOptionsCopyWith<MemoryGameOptions> get copyWith;
+  $MemoryCardsGameOptionsCopyWith<MemoryCardsGameOptions> get copyWith;
 }
 
 /// @nodoc
-abstract class $MemoryGameOptionsCopyWith<$Res> {
-  factory $MemoryGameOptionsCopyWith(
-          MemoryGameOptions value, $Res Function(MemoryGameOptions) then) =
-      _$MemoryGameOptionsCopyWithImpl<$Res>;
+abstract class $MemoryCardsGameOptionsCopyWith<$Res> {
+  factory $MemoryCardsGameOptionsCopyWith(MemoryCardsGameOptions value,
+          $Res Function(MemoryCardsGameOptions) then) =
+      _$MemoryCardsGameOptionsCopyWithImpl<$Res>;
   $Res call({MemoryCardSet cardSet, int pairCount, Duration durationOnMistake});
 
   $MemoryCardSetCopyWith<$Res> get cardSet;
 }
 
 /// @nodoc
-class _$MemoryGameOptionsCopyWithImpl<$Res>
-    implements $MemoryGameOptionsCopyWith<$Res> {
-  _$MemoryGameOptionsCopyWithImpl(this._value, this._then);
+class _$MemoryCardsGameOptionsCopyWithImpl<$Res>
+    implements $MemoryCardsGameOptionsCopyWith<$Res> {
+  _$MemoryCardsGameOptionsCopyWithImpl(this._value, this._then);
 
-  final MemoryGameOptions _value;
+  final MemoryCardsGameOptions _value;
   // ignore: unused_field
-  final $Res Function(MemoryGameOptions) _then;
+  final $Res Function(MemoryCardsGameOptions) _then;
 
   @override
   $Res call({
@@ -82,7 +82,7 @@ class _$MemoryGameOptionsCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$MemoryGameOptionsCopyWith<$Res>
-    implements $MemoryGameOptionsCopyWith<$Res> {
+    implements $MemoryCardsGameOptionsCopyWith<$Res> {
   factory _$MemoryGameOptionsCopyWith(
           _MemoryGameOptions value, $Res Function(_MemoryGameOptions) then) =
       __$MemoryGameOptionsCopyWithImpl<$Res>;
@@ -95,7 +95,7 @@ abstract class _$MemoryGameOptionsCopyWith<$Res>
 
 /// @nodoc
 class __$MemoryGameOptionsCopyWithImpl<$Res>
-    extends _$MemoryGameOptionsCopyWithImpl<$Res>
+    extends _$MemoryCardsGameOptionsCopyWithImpl<$Res>
     implements _$MemoryGameOptionsCopyWith<$Res> {
   __$MemoryGameOptionsCopyWithImpl(
       _MemoryGameOptions _value, $Res Function(_MemoryGameOptions) _then)
@@ -121,11 +121,12 @@ class __$MemoryGameOptionsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_MemoryGameOptions implements _MemoryGameOptions {
+class _$_MemoryGameOptions extends _MemoryGameOptions {
   _$_MemoryGameOptions(
       {required this.cardSet,
       required this.pairCount,
-      required this.durationOnMistake});
+      required this.durationOnMistake})
+      : super._();
 
   @override
   final MemoryCardSet cardSet;
@@ -136,7 +137,7 @@ class _$_MemoryGameOptions implements _MemoryGameOptions {
 
   @override
   String toString() {
-    return 'MemoryGameOptions(cardSet: $cardSet, pairCount: $pairCount, durationOnMistake: $durationOnMistake)';
+    return 'MemoryCardsGameOptions(cardSet: $cardSet, pairCount: $pairCount, durationOnMistake: $durationOnMistake)';
   }
 
   @override
@@ -167,7 +168,8 @@ class _$_MemoryGameOptions implements _MemoryGameOptions {
       __$MemoryGameOptionsCopyWithImpl<_MemoryGameOptions>(this, _$identity);
 }
 
-abstract class _MemoryGameOptions implements MemoryGameOptions {
+abstract class _MemoryGameOptions extends MemoryCardsGameOptions {
+  _MemoryGameOptions._() : super._();
   factory _MemoryGameOptions(
       {required MemoryCardSet cardSet,
       required int pairCount,

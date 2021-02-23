@@ -1,18 +1,19 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kids_game/features/memory_cards/models/memory_game_state.dart';
+
+import '../models/memory_card_game.dart';
 
 import 'memory_card_action.dart';
 
-class GameStateBloc extends Bloc<MemoryCardAction, MemoryGameState> {
-  GameStateBloc(MemoryGameState initialState) : super(initialState);
+class GameStateBloc extends Bloc<MemoryCardAction, MemoryCardsGame> {
+  GameStateBloc(MemoryCardsGame initialState) : super(initialState);
 
   @override
-  Stream<MemoryGameState> mapEventToState(MemoryCardAction event) =>
+  Stream<MemoryCardsGame> mapEventToState(MemoryCardAction event) =>
       event.map(flipCard: _flipCard);
 
-  Stream<MemoryGameState> _flipCard(FlipCard event) async* {
+  Stream<MemoryCardsGame> _flipCard(FlipCard event) async* {
     final slots = state.slots;
     final selected = state.selected;
     final index = event.slotIndex;
@@ -37,10 +38,7 @@ class GameStateBloc extends Bloc<MemoryCardAction, MemoryGameState> {
       return;
     }
 
-    final slotFirst = slots[selected];
-    final slotSecond = slots[index];
-
-    if (slotFirst.card == slotSecond.card) {
+    if (slots[selected].card == slots[index].card) {
       yield state.copyWith(
         slots: slots.rebuild(
           (b) {
@@ -48,6 +46,7 @@ class GameStateBloc extends Bloc<MemoryCardAction, MemoryGameState> {
             b[index] = b[index].matchCard();
           },
         ),
+        matchedPairCount: state.matchedPairCount + 1,
         selected: null,
       );
       return;
@@ -63,7 +62,7 @@ class GameStateBloc extends Bloc<MemoryCardAction, MemoryGameState> {
       selected: null,
     );
 
-    sleep(state.options.durationOnMistake);
+    sleep(state.durationOnMistake);
 
     yield state.copyWith(slots: slots.rebuild(
       (b) {
