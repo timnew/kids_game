@@ -9,5 +9,6 @@ abstract class MemoryGameOptions with _$MemoryGameOptions {
   factory MemoryGameOptions({
     required MemoryCardSet cardSet,
     required int pairCount,
+    required Duration durationOnMistake,
   }) = _MemoryGameOptions;
 }

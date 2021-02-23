@@ -17,10 +17,8 @@ class _$MemoryCardSlotStateTearOff {
     return Hide();
   }
 
-  Show show({required DateTime showAt}) {
-    return Show(
-      showAt: showAt,
-    );
+  Show show() {
+    return Show();
   }
 
   Matched matched() {
@@ -36,13 +34,13 @@ mixin _$MemoryCardSlotState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() hide,
-    required TResult Function(DateTime showAt) show,
+    required TResult Function() show,
     required TResult Function() matched,
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? hide,
-    TResult Function(DateTime showAt)? show,
+    TResult Function()? show,
     TResult Function()? matched,
     required TResult orElse(),
   });
@@ -115,7 +113,7 @@ class _$Hide extends Hide {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() hide,
-    required TResult Function(DateTime showAt) show,
+    required TResult Function() show,
     required TResult Function() matched,
   }) {
     return hide();
@@ -125,7 +123,7 @@ class _$Hide extends Hide {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? hide,
-    TResult Function(DateTime showAt)? show,
+    TResult Function()? show,
     TResult Function()? matched,
     required TResult orElse(),
   }) {
@@ -169,7 +167,6 @@ abstract class Hide extends MemoryCardSlotState {
 abstract class $ShowCopyWith<$Res> {
   factory $ShowCopyWith(Show value, $Res Function(Show) then) =
       _$ShowCopyWithImpl<$Res>;
-  $Res call({DateTime showAt});
 }
 
 /// @nodoc
@@ -180,66 +177,45 @@ class _$ShowCopyWithImpl<$Res> extends _$MemoryCardSlotStateCopyWithImpl<$Res>
 
   @override
   Show get _value => super._value as Show;
-
-  @override
-  $Res call({
-    Object? showAt = freezed,
-  }) {
-    return _then(Show(
-      showAt: showAt == freezed ? _value.showAt : showAt as DateTime,
-    ));
-  }
 }
 
 /// @nodoc
 class _$Show extends Show {
-  _$Show({required this.showAt}) : super._();
-
-  @override
-  final DateTime showAt;
+  _$Show() : super._();
 
   @override
   String toString() {
-    return 'MemoryCardSlotState.show(showAt: $showAt)';
+    return 'MemoryCardSlotState.show()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Show &&
-            (identical(other.showAt, showAt) ||
-                const DeepCollectionEquality().equals(other.showAt, showAt)));
+    return identical(this, other) || (other is Show);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(showAt);
-
-  @JsonKey(ignore: true)
-  @override
-  $ShowCopyWith<Show> get copyWith =>
-      _$ShowCopyWithImpl<Show>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() hide,
-    required TResult Function(DateTime showAt) show,
+    required TResult Function() show,
     required TResult Function() matched,
   }) {
-    return show(showAt);
+    return show();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? hide,
-    TResult Function(DateTime showAt)? show,
+    TResult Function()? show,
     TResult Function()? matched,
     required TResult orElse(),
   }) {
     if (show != null) {
-      return show(showAt);
+      return show();
     }
     return orElse();
   }
@@ -271,11 +247,7 @@ class _$Show extends Show {
 
 abstract class Show extends MemoryCardSlotState {
   Show._() : super._();
-  factory Show({required DateTime showAt}) = _$Show;
-
-  DateTime get showAt;
-  @JsonKey(ignore: true)
-  $ShowCopyWith<Show> get copyWith;
+  factory Show() = _$Show;
 }
 
 /// @nodoc
@@ -316,7 +288,7 @@ class _$Matched extends Matched {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() hide,
-    required TResult Function(DateTime showAt) show,
+    required TResult Function() show,
     required TResult Function() matched,
   }) {
     return matched();
@@ -326,7 +298,7 @@ class _$Matched extends Matched {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? hide,
-    TResult Function(DateTime showAt)? show,
+    TResult Function()? show,
     TResult Function()? matched,
     required TResult orElse(),
   }) {
@@ -371,8 +343,11 @@ class _$MemoryCardSlotTearOff {
   const _$MemoryCardSlotTearOff();
 
   _MemoryCardSlot call(
-      {required MemoryCard card, required MemoryCardSlotState state}) {
+      {required int index,
+      required MemoryCard card,
+      required MemoryCardSlotState state}) {
     return _MemoryCardSlot(
+      index: index,
       card: card,
       state: state,
     );
@@ -384,6 +359,7 @@ const $MemoryCardSlot = _$MemoryCardSlotTearOff();
 
 /// @nodoc
 mixin _$MemoryCardSlot {
+  int get index;
   MemoryCard get card;
   MemoryCardSlotState get state;
 
@@ -396,7 +372,7 @@ abstract class $MemoryCardSlotCopyWith<$Res> {
   factory $MemoryCardSlotCopyWith(
           MemoryCardSlot value, $Res Function(MemoryCardSlot) then) =
       _$MemoryCardSlotCopyWithImpl<$Res>;
-  $Res call({MemoryCard card, MemoryCardSlotState state});
+  $Res call({int index, MemoryCard card, MemoryCardSlotState state});
 
   $MemoryCardCopyWith<$Res> get card;
   $MemoryCardSlotStateCopyWith<$Res> get state;
@@ -413,10 +389,12 @@ class _$MemoryCardSlotCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? index = freezed,
     Object? card = freezed,
     Object? state = freezed,
   }) {
     return _then(_value.copyWith(
+      index: index == freezed ? _value.index : index as int,
       card: card == freezed ? _value.card : card as MemoryCard,
       state: state == freezed ? _value.state : state as MemoryCardSlotState,
     ));
@@ -444,7 +422,7 @@ abstract class _$MemoryCardSlotCopyWith<$Res>
           _MemoryCardSlot value, $Res Function(_MemoryCardSlot) then) =
       __$MemoryCardSlotCopyWithImpl<$Res>;
   @override
-  $Res call({MemoryCard card, MemoryCardSlotState state});
+  $Res call({int index, MemoryCard card, MemoryCardSlotState state});
 
   @override
   $MemoryCardCopyWith<$Res> get card;
@@ -465,10 +443,12 @@ class __$MemoryCardSlotCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? index = freezed,
     Object? card = freezed,
     Object? state = freezed,
   }) {
     return _then(_MemoryCardSlot(
+      index: index == freezed ? _value.index : index as int,
       card: card == freezed ? _value.card : card as MemoryCard,
       state: state == freezed ? _value.state : state as MemoryCardSlotState,
     ));
@@ -477,8 +457,12 @@ class __$MemoryCardSlotCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_MemoryCardSlot extends _MemoryCardSlot {
-  _$_MemoryCardSlot({required this.card, required this.state}) : super._();
+  _$_MemoryCardSlot(
+      {required this.index, required this.card, required this.state})
+      : super._();
 
+  @override
+  final int index;
   @override
   final MemoryCard card;
   @override
@@ -486,13 +470,15 @@ class _$_MemoryCardSlot extends _MemoryCardSlot {
 
   @override
   String toString() {
-    return 'MemoryCardSlot(card: $card, state: $state)';
+    return 'MemoryCardSlot(index: $index, card: $card, state: $state)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _MemoryCardSlot &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)) &&
             (identical(other.card, card) ||
                 const DeepCollectionEquality().equals(other.card, card)) &&
             (identical(other.state, state) ||
@@ -502,6 +488,7 @@ class _$_MemoryCardSlot extends _MemoryCardSlot {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(index) ^
       const DeepCollectionEquality().hash(card) ^
       const DeepCollectionEquality().hash(state);
 
@@ -514,9 +501,12 @@ class _$_MemoryCardSlot extends _MemoryCardSlot {
 abstract class _MemoryCardSlot extends MemoryCardSlot {
   _MemoryCardSlot._() : super._();
   factory _MemoryCardSlot(
-      {required MemoryCard card,
+      {required int index,
+      required MemoryCard card,
       required MemoryCardSlotState state}) = _$_MemoryCardSlot;
 
+  @override
+  int get index;
   @override
   MemoryCard get card;
   @override

@@ -14,10 +14,13 @@ class _$MemoryGameOptionsTearOff {
   const _$MemoryGameOptionsTearOff();
 
   _MemoryGameOptions call(
-      {required MemoryCardSet cardSet, required int pairCount}) {
+      {required MemoryCardSet cardSet,
+      required int pairCount,
+      required Duration durationOnMistake}) {
     return _MemoryGameOptions(
       cardSet: cardSet,
       pairCount: pairCount,
+      durationOnMistake: durationOnMistake,
     );
   }
 }
@@ -29,6 +32,7 @@ const $MemoryGameOptions = _$MemoryGameOptionsTearOff();
 mixin _$MemoryGameOptions {
   MemoryCardSet get cardSet;
   int get pairCount;
+  Duration get durationOnMistake;
 
   @JsonKey(ignore: true)
   $MemoryGameOptionsCopyWith<MemoryGameOptions> get copyWith;
@@ -39,7 +43,7 @@ abstract class $MemoryGameOptionsCopyWith<$Res> {
   factory $MemoryGameOptionsCopyWith(
           MemoryGameOptions value, $Res Function(MemoryGameOptions) then) =
       _$MemoryGameOptionsCopyWithImpl<$Res>;
-  $Res call({MemoryCardSet cardSet, int pairCount});
+  $Res call({MemoryCardSet cardSet, int pairCount, Duration durationOnMistake});
 
   $MemoryCardSetCopyWith<$Res> get cardSet;
 }
@@ -57,10 +61,14 @@ class _$MemoryGameOptionsCopyWithImpl<$Res>
   $Res call({
     Object? cardSet = freezed,
     Object? pairCount = freezed,
+    Object? durationOnMistake = freezed,
   }) {
     return _then(_value.copyWith(
       cardSet: cardSet == freezed ? _value.cardSet : cardSet as MemoryCardSet,
       pairCount: pairCount == freezed ? _value.pairCount : pairCount as int,
+      durationOnMistake: durationOnMistake == freezed
+          ? _value.durationOnMistake
+          : durationOnMistake as Duration,
     ));
   }
 
@@ -79,7 +87,7 @@ abstract class _$MemoryGameOptionsCopyWith<$Res>
           _MemoryGameOptions value, $Res Function(_MemoryGameOptions) then) =
       __$MemoryGameOptionsCopyWithImpl<$Res>;
   @override
-  $Res call({MemoryCardSet cardSet, int pairCount});
+  $Res call({MemoryCardSet cardSet, int pairCount, Duration durationOnMistake});
 
   @override
   $MemoryCardSetCopyWith<$Res> get cardSet;
@@ -100,26 +108,35 @@ class __$MemoryGameOptionsCopyWithImpl<$Res>
   $Res call({
     Object? cardSet = freezed,
     Object? pairCount = freezed,
+    Object? durationOnMistake = freezed,
   }) {
     return _then(_MemoryGameOptions(
       cardSet: cardSet == freezed ? _value.cardSet : cardSet as MemoryCardSet,
       pairCount: pairCount == freezed ? _value.pairCount : pairCount as int,
+      durationOnMistake: durationOnMistake == freezed
+          ? _value.durationOnMistake
+          : durationOnMistake as Duration,
     ));
   }
 }
 
 /// @nodoc
 class _$_MemoryGameOptions implements _MemoryGameOptions {
-  _$_MemoryGameOptions({required this.cardSet, required this.pairCount});
+  _$_MemoryGameOptions(
+      {required this.cardSet,
+      required this.pairCount,
+      required this.durationOnMistake});
 
   @override
   final MemoryCardSet cardSet;
   @override
   final int pairCount;
+  @override
+  final Duration durationOnMistake;
 
   @override
   String toString() {
-    return 'MemoryGameOptions(cardSet: $cardSet, pairCount: $pairCount)';
+    return 'MemoryGameOptions(cardSet: $cardSet, pairCount: $pairCount, durationOnMistake: $durationOnMistake)';
   }
 
   @override
@@ -131,14 +148,18 @@ class _$_MemoryGameOptions implements _MemoryGameOptions {
                     .equals(other.cardSet, cardSet)) &&
             (identical(other.pairCount, pairCount) ||
                 const DeepCollectionEquality()
-                    .equals(other.pairCount, pairCount)));
+                    .equals(other.pairCount, pairCount)) &&
+            (identical(other.durationOnMistake, durationOnMistake) ||
+                const DeepCollectionEquality()
+                    .equals(other.durationOnMistake, durationOnMistake)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(cardSet) ^
-      const DeepCollectionEquality().hash(pairCount);
+      const DeepCollectionEquality().hash(pairCount) ^
+      const DeepCollectionEquality().hash(durationOnMistake);
 
   @JsonKey(ignore: true)
   @override
@@ -149,12 +170,15 @@ class _$_MemoryGameOptions implements _MemoryGameOptions {
 abstract class _MemoryGameOptions implements MemoryGameOptions {
   factory _MemoryGameOptions(
       {required MemoryCardSet cardSet,
-      required int pairCount}) = _$_MemoryGameOptions;
+      required int pairCount,
+      required Duration durationOnMistake}) = _$_MemoryGameOptions;
 
   @override
   MemoryCardSet get cardSet;
   @override
   int get pairCount;
+  @override
+  Duration get durationOnMistake;
   @override
   @JsonKey(ignore: true)
   _$MemoryGameOptionsCopyWith<_MemoryGameOptions> get copyWith;

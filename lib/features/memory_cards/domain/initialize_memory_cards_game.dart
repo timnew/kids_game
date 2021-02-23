@@ -20,6 +20,7 @@ class InitializeMemoryCardsGame {
         options: MemoryGameOptions(
           cardSet: cardSet,
           pairCount: pairCount,
+          durationOnMistake: Duration(milliseconds: 500),
         ),
         slots: _generateSlots(cardSet.allCards.take(pairCount)));
   }
@@ -28,6 +29,10 @@ class InitializeMemoryCardsGame {
     final allCards = cards.followedBy(cards).toList();
     allCards.shuffle();
 
-    return allCards.map((e) => MemoryCardSlot.create(e)).toBuiltList();
+    return allCards
+        .asMap()
+        .map((k, e) => MapEntry(k, MemoryCardSlot.create(k, e)))
+        .values
+        .toBuiltList();
   }
 }
