@@ -13,9 +13,11 @@ T _$identity<T>(T value) => value;
 class _$MemoryGameOptionsTearOff {
   const _$MemoryGameOptionsTearOff();
 
-  _MemoryGameOptions call({required int pairCount}) {
+  _MemoryGameOptions call(
+      {required String cardSetName, required int expectedPairCount}) {
     return _MemoryGameOptions(
-      pairCount: pairCount,
+      cardSetName: cardSetName,
+      expectedPairCount: expectedPairCount,
     );
   }
 }
@@ -25,7 +27,8 @@ const $MemoryGameOptions = _$MemoryGameOptionsTearOff();
 
 /// @nodoc
 mixin _$MemoryGameOptions {
-  int get pairCount;
+  String get cardSetName;
+  int get expectedPairCount;
 
   @JsonKey(ignore: true)
   $MemoryGameOptionsCopyWith<MemoryGameOptions> get copyWith;
@@ -36,7 +39,7 @@ abstract class $MemoryGameOptionsCopyWith<$Res> {
   factory $MemoryGameOptionsCopyWith(
           MemoryGameOptions value, $Res Function(MemoryGameOptions) then) =
       _$MemoryGameOptionsCopyWithImpl<$Res>;
-  $Res call({int pairCount});
+  $Res call({String cardSetName, int expectedPairCount});
 }
 
 /// @nodoc
@@ -50,10 +53,15 @@ class _$MemoryGameOptionsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? pairCount = freezed,
+    Object? cardSetName = freezed,
+    Object? expectedPairCount = freezed,
   }) {
     return _then(_value.copyWith(
-      pairCount: pairCount == freezed ? _value.pairCount : pairCount as int,
+      cardSetName:
+          cardSetName == freezed ? _value.cardSetName : cardSetName as String,
+      expectedPairCount: expectedPairCount == freezed
+          ? _value.expectedPairCount
+          : expectedPairCount as int,
     ));
   }
 }
@@ -65,7 +73,7 @@ abstract class _$MemoryGameOptionsCopyWith<$Res>
           _MemoryGameOptions value, $Res Function(_MemoryGameOptions) then) =
       __$MemoryGameOptionsCopyWithImpl<$Res>;
   @override
-  $Res call({int pairCount});
+  $Res call({String cardSetName, int expectedPairCount});
 }
 
 /// @nodoc
@@ -81,38 +89,51 @@ class __$MemoryGameOptionsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? pairCount = freezed,
+    Object? cardSetName = freezed,
+    Object? expectedPairCount = freezed,
   }) {
     return _then(_MemoryGameOptions(
-      pairCount: pairCount == freezed ? _value.pairCount : pairCount as int,
+      cardSetName:
+          cardSetName == freezed ? _value.cardSetName : cardSetName as String,
+      expectedPairCount: expectedPairCount == freezed
+          ? _value.expectedPairCount
+          : expectedPairCount as int,
     ));
   }
 }
 
 /// @nodoc
 class _$_MemoryGameOptions implements _MemoryGameOptions {
-  _$_MemoryGameOptions({required this.pairCount});
+  _$_MemoryGameOptions(
+      {required this.cardSetName, required this.expectedPairCount});
 
   @override
-  final int pairCount;
+  final String cardSetName;
+  @override
+  final int expectedPairCount;
 
   @override
   String toString() {
-    return 'MemoryGameOptions(pairCount: $pairCount)';
+    return 'MemoryGameOptions(cardSetName: $cardSetName, expectedPairCount: $expectedPairCount)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _MemoryGameOptions &&
-            (identical(other.pairCount, pairCount) ||
+            (identical(other.cardSetName, cardSetName) ||
                 const DeepCollectionEquality()
-                    .equals(other.pairCount, pairCount)));
+                    .equals(other.cardSetName, cardSetName)) &&
+            (identical(other.expectedPairCount, expectedPairCount) ||
+                const DeepCollectionEquality()
+                    .equals(other.expectedPairCount, expectedPairCount)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(pairCount);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(cardSetName) ^
+      const DeepCollectionEquality().hash(expectedPairCount);
 
   @JsonKey(ignore: true)
   @override
@@ -121,10 +142,14 @@ class _$_MemoryGameOptions implements _MemoryGameOptions {
 }
 
 abstract class _MemoryGameOptions implements MemoryGameOptions {
-  factory _MemoryGameOptions({required int pairCount}) = _$_MemoryGameOptions;
+  factory _MemoryGameOptions(
+      {required String cardSetName,
+      required int expectedPairCount}) = _$_MemoryGameOptions;
 
   @override
-  int get pairCount;
+  String get cardSetName;
+  @override
+  int get expectedPairCount;
   @override
   @JsonKey(ignore: true)
   _$MemoryGameOptionsCopyWith<_MemoryGameOptions> get copyWith;

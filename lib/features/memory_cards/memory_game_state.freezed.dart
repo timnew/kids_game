@@ -15,9 +15,11 @@ class _$MemoryGameStateTearOff {
 
   _MemoryGameState call(
       {required MemoryGameOptions options,
+      required MemoryCardSet cardSet,
       required BuiltList<MemoryCardSlot> slots}) {
     return _MemoryGameState(
       options: options,
+      cardSet: cardSet,
       slots: slots,
     );
   }
@@ -29,6 +31,7 @@ const $MemoryGameState = _$MemoryGameStateTearOff();
 /// @nodoc
 mixin _$MemoryGameState {
   MemoryGameOptions get options;
+  MemoryCardSet get cardSet;
   BuiltList<MemoryCardSlot> get slots;
 
   @JsonKey(ignore: true)
@@ -40,9 +43,13 @@ abstract class $MemoryGameStateCopyWith<$Res> {
   factory $MemoryGameStateCopyWith(
           MemoryGameState value, $Res Function(MemoryGameState) then) =
       _$MemoryGameStateCopyWithImpl<$Res>;
-  $Res call({MemoryGameOptions options, BuiltList<MemoryCardSlot> slots});
+  $Res call(
+      {MemoryGameOptions options,
+      MemoryCardSet cardSet,
+      BuiltList<MemoryCardSlot> slots});
 
   $MemoryGameOptionsCopyWith<$Res> get options;
+  $MemoryCardSetCopyWith<$Res> get cardSet;
 }
 
 /// @nodoc
@@ -57,11 +64,13 @@ class _$MemoryGameStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? options = freezed,
+    Object? cardSet = freezed,
     Object? slots = freezed,
   }) {
     return _then(_value.copyWith(
       options:
           options == freezed ? _value.options : options as MemoryGameOptions,
+      cardSet: cardSet == freezed ? _value.cardSet : cardSet as MemoryCardSet,
       slots:
           slots == freezed ? _value.slots : slots as BuiltList<MemoryCardSlot>,
     ));
@@ -73,6 +82,13 @@ class _$MemoryGameStateCopyWithImpl<$Res>
       return _then(_value.copyWith(options: value));
     });
   }
+
+  @override
+  $MemoryCardSetCopyWith<$Res> get cardSet {
+    return $MemoryCardSetCopyWith<$Res>(_value.cardSet, (value) {
+      return _then(_value.copyWith(cardSet: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -82,10 +98,15 @@ abstract class _$MemoryGameStateCopyWith<$Res>
           _MemoryGameState value, $Res Function(_MemoryGameState) then) =
       __$MemoryGameStateCopyWithImpl<$Res>;
   @override
-  $Res call({MemoryGameOptions options, BuiltList<MemoryCardSlot> slots});
+  $Res call(
+      {MemoryGameOptions options,
+      MemoryCardSet cardSet,
+      BuiltList<MemoryCardSlot> slots});
 
   @override
   $MemoryGameOptionsCopyWith<$Res> get options;
+  @override
+  $MemoryCardSetCopyWith<$Res> get cardSet;
 }
 
 /// @nodoc
@@ -102,11 +123,13 @@ class __$MemoryGameStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? options = freezed,
+    Object? cardSet = freezed,
     Object? slots = freezed,
   }) {
     return _then(_MemoryGameState(
       options:
           options == freezed ? _value.options : options as MemoryGameOptions,
+      cardSet: cardSet == freezed ? _value.cardSet : cardSet as MemoryCardSet,
       slots:
           slots == freezed ? _value.slots : slots as BuiltList<MemoryCardSlot>,
     ));
@@ -115,16 +138,20 @@ class __$MemoryGameStateCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_MemoryGameState extends _MemoryGameState {
-  _$_MemoryGameState({required this.options, required this.slots}) : super._();
+  _$_MemoryGameState(
+      {required this.options, required this.cardSet, required this.slots})
+      : super._();
 
   @override
   final MemoryGameOptions options;
+  @override
+  final MemoryCardSet cardSet;
   @override
   final BuiltList<MemoryCardSlot> slots;
 
   @override
   String toString() {
-    return 'MemoryGameState(options: $options, slots: $slots)';
+    return 'MemoryGameState(options: $options, cardSet: $cardSet, slots: $slots)';
   }
 
   @override
@@ -134,6 +161,9 @@ class _$_MemoryGameState extends _MemoryGameState {
             (identical(other.options, options) ||
                 const DeepCollectionEquality()
                     .equals(other.options, options)) &&
+            (identical(other.cardSet, cardSet) ||
+                const DeepCollectionEquality()
+                    .equals(other.cardSet, cardSet)) &&
             (identical(other.slots, slots) ||
                 const DeepCollectionEquality().equals(other.slots, slots)));
   }
@@ -142,6 +172,7 @@ class _$_MemoryGameState extends _MemoryGameState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(options) ^
+      const DeepCollectionEquality().hash(cardSet) ^
       const DeepCollectionEquality().hash(slots);
 
   @JsonKey(ignore: true)
@@ -154,10 +185,13 @@ abstract class _MemoryGameState extends MemoryGameState {
   _MemoryGameState._() : super._();
   factory _MemoryGameState(
       {required MemoryGameOptions options,
+      required MemoryCardSet cardSet,
       required BuiltList<MemoryCardSlot> slots}) = _$_MemoryGameState;
 
   @override
   MemoryGameOptions get options;
+  @override
+  MemoryCardSet get cardSet;
   @override
   BuiltList<MemoryCardSlot> get slots;
   @override

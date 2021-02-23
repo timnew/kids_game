@@ -5,6 +5,7 @@ part 'memory_game_options.freezed.dart';
 @freezed
 abstract class MemoryGameOptions with _$MemoryGameOptions {
   factory MemoryGameOptions({
-    required int pairCount,
+    required String cardSetName,
+    required int expectedPairCount,
   }) = _MemoryGameOptions;
 }
