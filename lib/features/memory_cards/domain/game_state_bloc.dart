@@ -1,45 +1,38 @@
-import 'dart:io';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../models/memory_card_game.dart';
 
-import 'memory_card_action.dart';
-
-class GameStateBloc extends Bloc<MemoryCardAction, MemoryCardsGame> {
+class GameStateBloc extends Cubit<MemoryCardsGame> {
   GameStateBloc(MemoryCardsGame initialState) : super(initialState);
 
-  @override
-  Stream<MemoryCardsGame> mapEventToState(MemoryCardAction event) =>
-      event.map(flipCard: _flipCard);
-
-  Stream<MemoryCardsGame> _flipCard(FlipCard event) async* {
+  void flipCard(int index) {
     final slots = state.slots;
     final selected = state.selected;
-    final index = event.slotIndex;
 
     if (selected == null) {
-      yield state.copyWith(
+      emit(state.copyWith(
         slots: slots.rebuild(
           (b) => b[index] = b[index].showCard(),
         ),
         selected: index,
-      );
+      ));
+
       return;
     }
 
     if (selected == index) {
-      yield state.copyWith(
+      state.copyWith(
         slots: slots.rebuild(
           (b) => b[index] = b[index].hideCard(),
         ),
         selected: null,
       );
+
       return;
     }
 
     if (slots[selected].card == slots[index].card) {
-      yield state.copyWith(
+      emit(state.copyWith(
         slots: slots.rebuild(
           (b) {
             b[selected] = b[selected].matchCard();
@@ -48,11 +41,11 @@ class GameStateBloc extends Bloc<MemoryCardAction, MemoryCardsGame> {
         ),
         matchedPairCount: state.matchedPairCount + 1,
         selected: null,
-      );
+      ));
       return;
     }
 
-    yield state.copyWith(
+    emit(state.copyWith(
       slots: slots.rebuild(
         (b) {
           b[selected] = b[selected].showCard();
@@ -60,15 +53,19 @@ class GameStateBloc extends Bloc<MemoryCardAction, MemoryCardsGame> {
         },
       ),
       selected: null,
-    );
+    ));
 
-    sleep(state.durationOnMistake);
+    _resetSlotAfterDelay(state.durationOnMistake, selected, index);
+  }
 
-    yield state.copyWith(slots: slots.rebuild(
+  void _resetSlotAfterDelay(Duration duration, int selected, int index) async {
+    await Future.delayed(duration);
+
+    emit(state.copyWith(slots: state.slots.rebuild(
       (b) {
         b[selected] = b[selected].hideCard();
         b[index] = b[index].hideCard();
       },
-    ));
+    )));
   }
 }

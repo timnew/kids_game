@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kids_game/features/memory_cards/domain/memory_card_action.dart';
 import 'package:provider/provider.dart';
 import 'package:kids_game/features/memory_cards/domain/game_state_bloc.dart';
 
@@ -43,9 +42,6 @@ class MemoryCardSlotWidget extends StatelessWidget {
         child: Image.asset(slot.card.imageFile),
       );
 
-  void _flipCard(BuildContext context) {
-    context
-        .read<GameStateBloc>()
-        .add(MemoryCardAction.flipCard(slotIndex: slot.index));
-  }
+  void _flipCard(BuildContext context) =>
+      context.read<GameStateBloc>().flipCard(slot.index);
 }
