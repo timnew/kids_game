@@ -144,4 +144,55 @@ abstract class MemoryCardSet implements _$MemoryCardSet {
           imageFile: "memory_card_sets/transportations/van.png",
         ),
       ]);
+
+  factory MemoryCardSet.vegetables() => MemoryCardSet.create([
+        MemoryCard(
+          name: "brocooli",
+          imageFile: "xmemory_card_sets/vegetables/brocooli.png",
+        ),
+        MemoryCard(
+          name: "cabbage",
+          imageFile: "xmemory_card_sets/vegetables/cabbage.png",
+        ),
+        MemoryCard(
+          name: "carrot",
+          imageFile: "xmemory_card_sets/vegetables/carrot.png",
+        ),
+        MemoryCard(
+          name: "corn",
+          imageFile: "xmemory_card_sets/vegetables/corn.png",
+        ),
+        MemoryCard(
+          name: "cucumber",
+          imageFile: "xmemory_card_sets/vegetables/cucumber.png",
+        ),
+        MemoryCard(
+          name: "eggplant",
+          imageFile: "xmemory_card_sets/vegetables/eggplant.png",
+        ),
+        MemoryCard(
+          name: "mushroom",
+          imageFile: "xmemory_card_sets/vegetables/mushroom.png",
+        ),
+        MemoryCard(
+          name: "onion",
+          imageFile: "xmemory_card_sets/vegetables/onion.png",
+        ),
+        MemoryCard(
+          name: "pepper",
+          imageFile: "xmemory_card_sets/vegetables/pepper.png",
+        ),
+        MemoryCard(
+          name: "potato",
+          imageFile: "xmemory_card_sets/vegetables/potato.png",
+        ),
+        MemoryCard(
+          name: "pumpkin",
+          imageFile: "xmemory_card_sets/vegetables/pumpkin.png",
+        ),
+        MemoryCard(
+          name: "tomato",
+          imageFile: "xmemory_card_sets/vegetables/tomato.png",
+        ),
+      ]);
 }
