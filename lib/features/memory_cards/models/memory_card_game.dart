@@ -19,4 +19,6 @@ abstract class MemoryCardsGame implements _$MemoryCardsGame {
   }) = _MemoryCardsGame;
 
   Duration get durationOnMistake => options.durationOnMistake;
+
+  bool get isWon => matchedPairCount * 2 == slots.length;
 }

@@ -5,6 +5,7 @@ import '../domain/memory_cards_game_bloc.dart';
 import '../models/memory_cards_game_options.dart';
 
 import 'board_layout_provider.dart';
+import 'game_win_screen.dart';
 import 'memory_card_board_widget.dart';
 import 'memory_card_score_board.dart';
 
@@ -24,8 +25,9 @@ class MemoryCardsGameScreen extends StatelessWidget {
           body: BoardLayoutProvider(
             child: Column(
               children: const [
+                GameWinScreen(),
                 Expanded(child: MemoryCardBoardWidget()),
-                MemoryCardScoreBoard()
+                MemoryCardScoreBoard(),
               ],
             ),
           ),
