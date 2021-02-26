@@ -1,5 +1,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kids_game/features/app/AppPreferences.dart';
+import 'package:kids_game/utils.dart';
 
 import 'memory_card_game.dart';
 import 'memory_card.dart';
@@ -13,24 +15,27 @@ abstract class MemoryCardsGameOptions implements _$MemoryCardsGameOptions {
   MemoryCardsGameOptions._();
 
   factory MemoryCardsGameOptions({
-    required MemoryCardSet cardSet,
+    required BuiltSet<MemoryCard> cards,
     required int pairCount,
     required Duration durationOnMistake,
   }) = _MemoryGameOptions;
 
-  factory MemoryCardsGameOptions.defaultOptions() {
-    final cardSet = MemoryCardSet.allCardSets.first;
+  factory MemoryCardsGameOptions.loadOptions() {
+    final prefs = AppPreferences();
+
+    final cardSet = MemoryCardSet.findByName(prefs.cardSetName);
+    final pairCount = prefs.cardPairCount;
 
     return MemoryCardsGameOptions(
-      cardSet: cardSet,
-      pairCount: cardSet.cardCount,
+      cards: cardSet.cards.toBuiltSet(),
+      pairCount: ensureWithIn(pairCount, max: cardSet.cardCount, min: 1),
       durationOnMistake: Duration(milliseconds: 1000),
     );
   }
 
   MemoryCardsGame createGame() => MemoryCardsGame(
         options: this,
-        slots: _generateSlots(cardSet.cards.take(pairCount)),
+        slots: _generateSlots(cards.take(pairCount)),
       );
 
   BuiltList<MemoryCardSlot> _generateSlots(Iterable<MemoryCard> cards) {

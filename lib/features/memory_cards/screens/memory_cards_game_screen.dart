@@ -14,7 +14,7 @@ class MemoryCardsGameScreen extends StatelessWidget {
       BlocProvider<MemoryCardsGameBloc>(
         lazy: false,
         create: (BuildContext context) => MemoryCardsGameBloc(
-          MemoryCardsGameOptions.defaultOptions().createGame(),
+          MemoryCardsGameOptions.loadOptions().createGame(),
         ),
         child: child,
       );

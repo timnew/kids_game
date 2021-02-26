@@ -13,10 +13,15 @@ abstract class MemoryCardSet {
     TransportationCardSet(),
     VegetableCardSet(),
   ]);
+
+  static MemoryCardSet findByName(String? name) => allCardSets.firstWhere(
+        (cs) => cs.name == name,
+        orElse: () => allCardSets.first,
+      );
 }
 
 class CuteAnimalCardSet extends MemoryCardSet {
-  CuteAnimalCardSet() : super(name: "可愛的動物", cardCount: 8);
+  CuteAnimalCardSet() : super(name: "cute_animals", cardCount: 8);
 
   @override
   List<MemoryCard> get cards => [
@@ -56,7 +61,7 @@ class CuteAnimalCardSet extends MemoryCardSet {
 }
 
 class TransportationCardSet extends MemoryCardSet {
-  TransportationCardSet() : super(name: "運輸工具", cardCount: 23);
+  TransportationCardSet() : super(name: "transporations", cardCount: 23);
 
   @override
   List<MemoryCard> get cards => [
@@ -156,7 +161,7 @@ class TransportationCardSet extends MemoryCardSet {
 }
 
 class VegetableCardSet extends MemoryCardSet {
-  VegetableCardSet() : super(name: "蔬菜", cardCount: 12);
+  VegetableCardSet() : super(name: "vegetables", cardCount: 12);
 
   @override
   List<MemoryCard> get cards => [

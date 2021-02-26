@@ -14,11 +14,11 @@ class _$MemoryCardsGameOptionsTearOff {
   const _$MemoryCardsGameOptionsTearOff();
 
   _MemoryGameOptions call(
-      {required MemoryCardSet cardSet,
+      {required BuiltSet<MemoryCard> cards,
       required int pairCount,
       required Duration durationOnMistake}) {
     return _MemoryGameOptions(
-      cardSet: cardSet,
+      cards: cards,
       pairCount: pairCount,
       durationOnMistake: durationOnMistake,
     );
@@ -30,7 +30,7 @@ const $MemoryCardsGameOptions = _$MemoryCardsGameOptionsTearOff();
 
 /// @nodoc
 mixin _$MemoryCardsGameOptions {
-  MemoryCardSet get cardSet;
+  BuiltSet<MemoryCard> get cards;
   int get pairCount;
   Duration get durationOnMistake;
 
@@ -43,9 +43,8 @@ abstract class $MemoryCardsGameOptionsCopyWith<$Res> {
   factory $MemoryCardsGameOptionsCopyWith(MemoryCardsGameOptions value,
           $Res Function(MemoryCardsGameOptions) then) =
       _$MemoryCardsGameOptionsCopyWithImpl<$Res>;
-  $Res call({MemoryCardSet cardSet, int pairCount, Duration durationOnMistake});
-
-  $MemoryCardSetCopyWith<$Res> get cardSet;
+  $Res call(
+      {BuiltSet<MemoryCard> cards, int pairCount, Duration durationOnMistake});
 }
 
 /// @nodoc
@@ -59,24 +58,17 @@ class _$MemoryCardsGameOptionsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? cardSet = freezed,
+    Object? cards = freezed,
     Object? pairCount = freezed,
     Object? durationOnMistake = freezed,
   }) {
     return _then(_value.copyWith(
-      cardSet: cardSet == freezed ? _value.cardSet : cardSet as MemoryCardSet,
+      cards: cards == freezed ? _value.cards : cards as BuiltSet<MemoryCard>,
       pairCount: pairCount == freezed ? _value.pairCount : pairCount as int,
       durationOnMistake: durationOnMistake == freezed
           ? _value.durationOnMistake
           : durationOnMistake as Duration,
     ));
-  }
-
-  @override
-  $MemoryCardSetCopyWith<$Res> get cardSet {
-    return $MemoryCardSetCopyWith<$Res>(_value.cardSet, (value) {
-      return _then(_value.copyWith(cardSet: value));
-    });
   }
 }
 
@@ -87,10 +79,8 @@ abstract class _$MemoryGameOptionsCopyWith<$Res>
           _MemoryGameOptions value, $Res Function(_MemoryGameOptions) then) =
       __$MemoryGameOptionsCopyWithImpl<$Res>;
   @override
-  $Res call({MemoryCardSet cardSet, int pairCount, Duration durationOnMistake});
-
-  @override
-  $MemoryCardSetCopyWith<$Res> get cardSet;
+  $Res call(
+      {BuiltSet<MemoryCard> cards, int pairCount, Duration durationOnMistake});
 }
 
 /// @nodoc
@@ -106,12 +96,12 @@ class __$MemoryGameOptionsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? cardSet = freezed,
+    Object? cards = freezed,
     Object? pairCount = freezed,
     Object? durationOnMistake = freezed,
   }) {
     return _then(_MemoryGameOptions(
-      cardSet: cardSet == freezed ? _value.cardSet : cardSet as MemoryCardSet,
+      cards: cards == freezed ? _value.cards : cards as BuiltSet<MemoryCard>,
       pairCount: pairCount == freezed ? _value.pairCount : pairCount as int,
       durationOnMistake: durationOnMistake == freezed
           ? _value.durationOnMistake
@@ -123,13 +113,13 @@ class __$MemoryGameOptionsCopyWithImpl<$Res>
 /// @nodoc
 class _$_MemoryGameOptions extends _MemoryGameOptions {
   _$_MemoryGameOptions(
-      {required this.cardSet,
+      {required this.cards,
       required this.pairCount,
       required this.durationOnMistake})
       : super._();
 
   @override
-  final MemoryCardSet cardSet;
+  final BuiltSet<MemoryCard> cards;
   @override
   final int pairCount;
   @override
@@ -137,16 +127,15 @@ class _$_MemoryGameOptions extends _MemoryGameOptions {
 
   @override
   String toString() {
-    return 'MemoryCardsGameOptions(cardSet: $cardSet, pairCount: $pairCount, durationOnMistake: $durationOnMistake)';
+    return 'MemoryCardsGameOptions(cards: $cards, pairCount: $pairCount, durationOnMistake: $durationOnMistake)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _MemoryGameOptions &&
-            (identical(other.cardSet, cardSet) ||
-                const DeepCollectionEquality()
-                    .equals(other.cardSet, cardSet)) &&
+            (identical(other.cards, cards) ||
+                const DeepCollectionEquality().equals(other.cards, cards)) &&
             (identical(other.pairCount, pairCount) ||
                 const DeepCollectionEquality()
                     .equals(other.pairCount, pairCount)) &&
@@ -158,7 +147,7 @@ class _$_MemoryGameOptions extends _MemoryGameOptions {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(cardSet) ^
+      const DeepCollectionEquality().hash(cards) ^
       const DeepCollectionEquality().hash(pairCount) ^
       const DeepCollectionEquality().hash(durationOnMistake);
 
@@ -171,12 +160,12 @@ class _$_MemoryGameOptions extends _MemoryGameOptions {
 abstract class _MemoryGameOptions extends MemoryCardsGameOptions {
   _MemoryGameOptions._() : super._();
   factory _MemoryGameOptions(
-      {required MemoryCardSet cardSet,
+      {required BuiltSet<MemoryCard> cards,
       required int pairCount,
       required Duration durationOnMistake}) = _$_MemoryGameOptions;
 
   @override
-  MemoryCardSet get cardSet;
+  BuiltSet<MemoryCard> get cards;
   @override
   int get pairCount;
   @override
