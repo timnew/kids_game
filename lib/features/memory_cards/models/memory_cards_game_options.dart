@@ -19,18 +19,18 @@ abstract class MemoryCardsGameOptions implements _$MemoryCardsGameOptions {
   }) = _MemoryGameOptions;
 
   factory MemoryCardsGameOptions.defaultOptions() {
-    final cardSet = MemoryCardSet.cuteAnimalSet();
+    final cardSet = MemoryCardSet.allCardSets.first;
 
     return MemoryCardsGameOptions(
       cardSet: cardSet,
-      pairCount: cardSet.allCards.length,
+      pairCount: cardSet.cardCount,
       durationOnMistake: Duration(milliseconds: 1000),
     );
   }
 
   MemoryCardsGame createGame() => MemoryCardsGame(
         options: this,
-        slots: _generateSlots(cardSet.allCards.take(pairCount)),
+        slots: _generateSlots(cardSet.cards.take(pairCount)),
       );
 
   BuiltList<MemoryCardSlot> _generateSlots(Iterable<MemoryCard> cards) {

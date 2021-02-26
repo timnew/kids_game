@@ -1,21 +1,25 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:built_collection/built_collection.dart';
-
 import 'memory_card.dart';
 
-part 'memory_card_set.freezed.dart';
+abstract class MemoryCardSet {
+  final String name;
+  final int cardCount;
 
-@freezed
-abstract class MemoryCardSet implements _$MemoryCardSet {
-  MemoryCardSet._();
+  MemoryCardSet({required this.name, required this.cardCount});
 
-  factory MemoryCardSet({required BuiltSet<MemoryCard> allCards}) =
-      _MemoryCardSet;
+  List<MemoryCard> get cards;
 
-  factory MemoryCardSet.create(Iterable<MemoryCard> cards) =>
-      MemoryCardSet(allCards: BuiltSet.of(cards));
+  static final Set<MemoryCardSet> allCardSets = Set.of([
+    CuteAnimalCardSet(),
+    TransportationCardSet(),
+    VegetableCardSet(),
+  ]);
+}
 
-  factory MemoryCardSet.cuteAnimalSet() => MemoryCardSet.create([
+class CuteAnimalCardSet extends MemoryCardSet {
+  CuteAnimalCardSet() : super(name: "可愛的動物", cardCount: 8);
+
+  @override
+  List<MemoryCard> get cards => [
         MemoryCard(
           name: "elephant",
           imageFile: "memory_card_sets/cute_animals/elephant.jpg",
@@ -48,9 +52,14 @@ abstract class MemoryCardSet implements _$MemoryCardSet {
           name: "zebra",
           imageFile: "memory_card_sets/cute_animals/zebra.jpg",
         ),
-      ]);
+      ];
+}
 
-  factory MemoryCardSet.transportations() => MemoryCardSet.create([
+class TransportationCardSet extends MemoryCardSet {
+  TransportationCardSet() : super(name: "運輸工具", cardCount: 23);
+
+  @override
+  List<MemoryCard> get cards => [
         MemoryCard(
           name: "airplane",
           imageFile: "memory_card_sets/transportations/airplane.png",
@@ -143,9 +152,14 @@ abstract class MemoryCardSet implements _$MemoryCardSet {
           name: "van",
           imageFile: "memory_card_sets/transportations/van.png",
         ),
-      ]);
+      ];
+}
 
-  factory MemoryCardSet.vegetables() => MemoryCardSet.create([
+class VegetableCardSet extends MemoryCardSet {
+  VegetableCardSet() : super(name: "蔬菜", cardCount: 12);
+
+  @override
+  List<MemoryCard> get cards => [
         MemoryCard(
           name: "brocooli",
           imageFile: "xmemory_card_sets/vegetables/brocooli.png",
@@ -194,5 +208,5 @@ abstract class MemoryCardSet implements _$MemoryCardSet {
           name: "tomato",
           imageFile: "xmemory_card_sets/vegetables/tomato.png",
         ),
-      ]);
+      ];
 }
