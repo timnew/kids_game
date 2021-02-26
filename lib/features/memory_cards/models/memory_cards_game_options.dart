@@ -23,7 +23,7 @@ abstract class MemoryCardsGameOptions implements _$MemoryCardsGameOptions {
 
     return MemoryCardsGameOptions(
       cardSet: cardSet,
-      pairCount: 1, //cardSet.allCards.length,
+      pairCount: cardSet.allCards.length,
       durationOnMistake: Duration(milliseconds: 1000),
     );
   }
