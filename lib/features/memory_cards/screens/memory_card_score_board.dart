@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../domain/memory_cards_game_bloc.dart';
 import '../models/memory_card_game.dart';
+import 'game_option_editor.dart';
 
 class MemoryCardScoreBoard extends StatelessWidget {
   const MemoryCardScoreBoard({Key? key}) : super(key: key);
@@ -53,7 +54,10 @@ class _ControlPanel extends StatelessWidget {
           IconButton(
               icon: Icon(Icons.refresh),
               onPressed: () => context.read<MemoryCardsGameBloc>().restart()),
-          // IconButton(icon: Icon(Icons.settings), onPressed: () {}),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () => GameOptionEditor.show(context),
+          ),
         ],
       );
 }

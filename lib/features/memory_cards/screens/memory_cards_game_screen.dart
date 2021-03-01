@@ -25,8 +25,11 @@ class MemoryCardsGameScreen extends StatelessWidget {
           body: BoardLayoutProvider(
             child: Column(
               children: const [
-                GameWinScreen(),
-                Expanded(child: MemoryCardBoardWidget()),
+                Expanded(
+                  child: GameWinScreen(
+                    child: MemoryCardBoardWidget(),
+                  ),
+                ),
                 MemoryCardScoreBoard(),
               ],
             ),
